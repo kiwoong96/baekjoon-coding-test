@@ -11,8 +11,8 @@ graph = [[]for _ in range(N+1)]
 
 for i in range(M):
     start,end,dist = list(map(int,input().split()))
-    graph[start].append((end,dist))
-    graph[end].append((start,dist))
+    graph[start].append((end,dist*2))
+    graph[end].append((start,dist*2))
 
 def dijkstraA(start):
     hq = []
@@ -41,16 +41,16 @@ def dijkstraB(start):
         curDist , cur , flag = heapq.heappop(hq)
         if curDist > distanceB[cur][flag]:
             continue
-            
+
         for nextNode, dist in graph[cur]:
             if flag == 0:
-                nextDist = curDist + dist / 2
+                nextDist = curDist + dist // 2
             else:
                 nextDist = curDist + dist * 2
 
-            if  nextDist < distanceB[nextNode][~flag]:
-                distanceB[nextNode][~flag] = nextDist
-                heapq.heappush(hq,(nextDist,nextNode,~flag))
+            if  nextDist < distanceB[nextNode][not flag]:
+                distanceB[nextNode][not flag] = nextDist
+                heapq.heappush(hq,(nextDist,nextNode,not flag))
 
 
 dijkstraA(1)
@@ -63,7 +63,9 @@ for i in range(1,N+1):
         result += 1
 
 print(result)
+"""
 
+"""
 
 """
 5 6
