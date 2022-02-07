@@ -78,6 +78,7 @@ solution(stringList)
 
 
 
+
 import re
 
 N = int(input())

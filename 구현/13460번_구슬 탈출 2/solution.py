@@ -40,7 +40,7 @@ def BFS():
                     bNx -= dx[i]
                     bNy -= dy[i]
             
-            if (rNx,rNy,bNx,bNy) not in visited:
+            if (rNx,rNy,bNx,bNy) not in visited: 
                 q.append((cnt+1,rNx,rNy,bNx,bNy))
                 visited.add((rNx,rNy,bNx,bNy))
     return
